@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Upload interface for BoSCO</title>
+	<meta name="author" content="Xavier Prat-Resina" />
+	<!-- Date: 2013-08-21 -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+	<link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/eggplant/jquery-ui.min.css" />
+	<link type="text/css" rel="stylesheet" href="interface.css" />
+	<script type="text/javascript">
+		$(function(){
+			$("#submitButton").button();
+			$("#submitButton2").button();
+			for (var f = 0; f < document.forms.length; f++) document.forms[f].reset();
+		})
+		function addForm(){
+			var input = document.createElement('input');
+			input.type ='file';
+			input.name ='gradesFile[]';
+			$("#gradesArea").append(input);
+		}
+	</script>
+</head>
+<body>
+	<div id="content">
+		<div>
+			<h2>BoSCO</h2>
+			<h4>a Browser Of Student and Course Objects</h4>
+		</div>
+		<h3>Choose one option to submit data to BoSCO </h3>
+		<div class="submit" id="zipSubmit">
+			<h3>Option 1: Upload the ZIP file that you already downloaded from iSEAL <a href="https://iseal.r.umn.edu/app/faculty/requestisealdata">in "BoSCO Data"</a></h3>	
+			<form action="processzip.php" method="post" enctype="multipart/form-data">
+				<p><label for="zipFile">Upload the iSEAL ZIP file and click submit:</label>
+				<br>
+				<br>
+				<input type="file" name="zipFile"><br>
+				<br>
+				<br>
+				<input id="submitButton2" type="submit" name="submit" value="Submit">
+			</form>
+		</div>
+
+		<div class="submit" id="fileSubmit">
+			<h3>Option 2: Submit the separate files for course, demographics and student performance</h3>
+			<p>This option is only recommended if you have modified the iSEAL files to include surveys or additional student data</p>
+		<form action="process.php" method="post" enctype="multipart/form-data">
+			<div id="courseArea" class="areas">
+				<p><label for="courseFile">Course csv file:</label>
+					<br>(See <a href="boscoupload/courseFile.csv">example</a>)</p>
+				<input type="file" name="courseFile"><br>
+			</div>
+			<div id="gradesArea" class="areas">
+				<p><label for="gradesFile">Student performance and surveys csv file: </label>
+					<br>(See <a href="boscoupload/gradesFile0.csv">example</a>)</p>
+				<p><input type="file" name="gradesFile[]"></p>
+				<p><a href="javascript:addForm()">Add another file</a></p>
+			</div>
+			<div id="backgroundArea" class="areas">
+				<p> <label for="backgroundFile">Demographics csv file:</label> 
+					<br>(See <a href="boscoupload/backgroundFile.csv">example</a>) </p>
+				<p><input type="file" name="backgroundFile"></p>
+				<!--br><input id="save" type="checkbox" name="noSave" >Do not save this session-->
+			</div>
+			<br><input id="submitButton" type="submit" name="submit" value="Submit">Go!
+		</form>
+			
+		</div>
+	</div>
+			<div id="footer">
+			<br>
+			<hr>
+			<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a> 
+			  Robert Dunbar, Molly Dingel and Xavier Prat-Resina. University of Minnesota Rochester, 2013-2015
+			  <br />This work is licensed under a 
+			  <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+		</div>
+</body>
+</html>
+

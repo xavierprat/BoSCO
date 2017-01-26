@@ -1,0 +1,89 @@
+body{
+	background-color: #F0F0F0;
+}
+#headerBar{
+	position:relative;
+	float:left;
+	/*height:3em;*/
+	width:100%;
+}
+#menuHeader{
+	font-size:50%;
+}
+#headerTitle{
+	font-size: large;
+	text-align: center;
+}
+#content{
+	position:relative;
+	float:left;
+	width:100%;
+}
+#LeftDialog{
+	position:relative;
+	width:24%;
+	float:left;
+	padding: 0.2em;
+}
+.AxisSelect{
+	float:left;
+	width:100%;
+	padding:1em;
+}
+.selectMenus{
+	position:relative;
+	float:left;
+}
+.selectOtherMenus{
+	float:left;
+	width:100%
+}
+.ui-buttonset{
+	font-size:70%;
+}
+.ui-button{
+	font-size:70%;
+}
+.ui-tabs{
+	font-size:50%;
+}
+.ui-accordion{
+	font-size:50%;
+}
+#CenterDialog{
+	position:relative;
+	width:50%;
+	float:left;
+	border: 1px #3399FF solid;
+	border-radius:10px;
+	padding: 0.2em;
+}
+#upCenterDialog{
+	position:relative;
+	width:100%;
+	float:left;
+}
+#downCenterDialog{
+	position:relative;
+	float:left;
+	width:100%;
+}
+#RightDialog{
+	position:relative;
+	width:24%;
+	float:left;
+	padding: 0.2em;
+}
+
+#lowerDialog{
+	position:relative;
+	float:left;
+	width:100%;
+}
+
+#footer{
+	position:relative;
+	float:left;
+	width:100%;
+}
+

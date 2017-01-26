@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>tutorial</title>
+	<meta name="author" content="Xavier Prat-Resina" />
+	<!-- Date: 2013-07-12 -->
+</head>
+<body>
+
+<h3>This is an old document that we wrote when trying to design bosco</h3>
+<p>Important:
+<b>
+<ul>
+	<li>The plots shown here are all fake numbers taken from a random function in excel. <a href="sampleData.xlsx">Take a look here</a></li>
+	<li>Any of the student data represented could be filtered based on categorical variables (gender, ethnicity, have taken a course...)
+	numerical (GPA, ACT, grade on a specific course or assignment</li>
+	<li>This interface is designed to easily navigate and find interesting data. 
+		<br>It will not include many graphing tools nor statistical analysis that do not reveal extra information. 
+		<br>All data can be downloaded into csv form for further analysis and representation
+		<br>We will use JSON data with a javascript database to easily navigate the so many different ways one can classify the data.
+		<br>It will also be easy to allow users to upload their own data and/or interface it with iSEAL, Moodle...
+	</li>
+</ul>
+</b></p>
+
+<p>Possible Representations:</p>
+<ol>
+	<li>Course vs Course: matching students (paired samples).
+		<ul>
+			<li>How do students perform in one course vs another?
+				<br>Compare final grade vs final grade or a specific assignment from courseI to another assignment form courseII
+				<br>Example <img width="650" src="images/cvc.png"/>
+			</li>
+			<li>It cannot be the same course in different years because only the common students between the courses
+				will be represented.
+			    <br>BoSCO will find all students who took those two courses. 
+				<br>Potentially, it can merge different semesters when different students may have taken that same course at a different time </li>
+			<li>It can represent a final grade of a course vs an assignment grade of that same course since the students are the same
+				<br><img src="images/cvc_hwvsfinal.png" width="650"/></li>
+
+		</ul> 
+	</li>
+	<li>Course vs Time
+		<ul>
+			<li>How final (averaged over students) grades (or final letter) evolve over time (by semesters)
+				<br><img src="images/cvt_average.png" width="650"/>
+			</li>
+			<li>Select as many courses as you want: Merge courses in one single average (e.g. clusters) or represent them as different lines
+				<br><img src="images/cvt_cluster.png" width="650" />
+			</li>
+			<li>To find out how courses can be clustered based on similar grades go to the "Curriculum" section</li>
+		</ul>
+	</li>
+	<li>Students vs Time
+		<ul>
+			<li>Average grades for all courses taken by Freshmen, Sophomores, Juniors...
+				<br><img src="images/svt_byyear.png" width="650" /></li>
+			<li>Average GPA (all courses) or a  set of courses through time of one student, or filtered students
+				<br><img src="images/svt_gpa.png" width="650"/></li>
+		</ul>
+	</li>
+	<li>Curriculum
+		<ul>
+			<li>Course vs Course: similarity between two un-matched (unpaired) samples
+				<ul>
+					<li>Robb's graphs from "R" were the <a href="https://en.wikipedia.org/wiki/Pearson_product-moment_correlation_coefficient">Pearson correlation coefficient</a>
+						<br>Can it only be applied with "matched" samples, that is, it needs common students between courses?
+					</li>
+					<li>Covariance, Student's t-test, chi-squared test, PCA, clustering analysis... 
+						<br>if it has to be implemented we may need to choose which technique should be on BoSCO and which can be done elsewhere after downloading the data
+					</li>
+				</ul>
+			</li>
+			<li>Sequence of courses that students choose: identify paths</li>
+		</ul>
+	</li>
+</ol>
+Each student will have two kinds of variables:
+<ul>
+	<li>Measuring/Performance student variables:
+		<br>These variables are associated to student's habilities: generally, except for surveys, the higher the better.
+		<ul>
+			<li>Course grades: final numerical, letter, N/S,  assignment grades (quizzes, papers...)</li>
+			<li>GPA or average of cluster courses (computed on the fly or searchable)</li>
+			<li>Student background - numerical: ACT scores</li>
+		</ul>
+	</li>
+	<li>Independent student variables:
+		<ul>
+			<li>Student background - non numerical: gender, ethnicity, first generation...</li>
+			<li>Student while at UMR: number of credits, year he/she is in</li>
+		</ul>
+	</li>
+</ul>
+Each course will have the following variables associated to it:
+<ul>
+	<li>Semester-->clasroom where it was taught, number of students, instructors, </li>
+	<li>Do we need? pre-req, number of credits</li>
+</ul>
+
+<p>On tags and concepts:</p>
+<ul>
+	<li>Course vs Course representations: For integration purposes: 
+		<ul>
+			<li>Automatic search (NLP) or pulling out tags:<br>
+			When clicking on a course object (semester, assignment...modules? LOs?)
+			a series of tags will appear. When clicking on one of these a list of course object
+			that have the tag will show up.
+			</li>
+			<li>UMR learning outcomes will be listed: upon clicking one of them
+			a list of course objects that have the LOutcome will show up	
+				</li>
+			<li>MCAT (other standard of topics) are listed and on clicking
+			a list of course objects that have the topic will show up	
+			</li>
+			<li>The same can be applied on standard (agreed) tags regarding:
+				<ul>
+					<li>Kinds of activities (group, preentation, writing)</li>
+					<li>Cognitive level</li>
+					<li>Math level</li>
+					<li>For writing assignemnts: Literature's rubric</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li>For quantifying concepts/topics instead of assignments: 
+		<ul>
+			<li>Choose one category: (math level,cognitive level)" and see the grade </li>
+		</ul>
+	</li>
+</ul>
+</body>
+</html>
+

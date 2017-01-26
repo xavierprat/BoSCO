@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Upload interface for BoSCO</title>
+	<meta name="author" content="Xavier Prat-Resina" />
+	<!-- Date: 2013-08-21 -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+	<link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/eggplant/jquery-ui.min.css" />
+	<link type="text/css" rel="stylesheet" href="interface.css" />
+	<script type="text/javascript">
+		$(function(){
+			$("#submitButton").button();
+			for (var f = 0; f < document.forms.length; f++) document.forms[f].reset();
+		})
+		function addForm(){
+			var input = document.createElement('input');
+			input.type ='file';
+			input.name ='gradesFile[]';
+			$("#gradesArea").append(input);
+		}
+	</script>
+</head>
+<body>
+	<div id="content">
+		<div>
+			<h2>BoSCO</h2>
+			<h4>a Browser Of Student and Course Objects</h4>
+		</div>
+		<form action="process.php" method="post" enctype="multipart/form-data">
+			<div id="courseArea" class="areas">
+				<p><label for="courseFile">Course csv file:</label>
+					<br>(See <a href="boscoupload/courseFile.csv">example</a>)</p>
+				<input type="file" name="courseFile"><br>
+			</div>
+			<div id="gradesArea" class="areas">
+				<p><label for="gradesFile">Student performance and surveys csv file: </label>
+					<br>(See <a href="boscoupload/gradesFile0.csv">example</a>)</p>
+				<p><input type="file" name="gradesFile[]"></p>
+				<p><a href="javascript:addForm()">Add another file</a></p>
+			</div>
+			<div id="backgroundArea" class="areas">
+				<p> <label for="backgroundFile">Demographics csv file:</label> 
+					<br>(See <a href="boscoupload/backgroundFile.csv">example</a>) </p>
+				<p><input type="file" name="backgroundFile"></p>
+				<input id="submitButton" type="submit" name="submit" value="Submit">Go!
+				<!--br><input id="save" type="checkbox" name="noSave" >Do not save this session-->
+			</div>
+		</form>
+	</div>
+</body>
+</html>
+
